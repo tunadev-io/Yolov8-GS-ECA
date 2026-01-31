@@ -21,7 +21,7 @@ setup(
     python_requires='>=3.8',
     
     # Include custom module source files  
-    packages=find_packages(include=['nn', 'nn.*', 'models', 'models.*']),
+    packages=['nn', 'nn.modules', 'models', 'models.v3', 'models.v5', 'models.v6', 'models.v8', 'models.rt-detr'],
     
     package_data={
         'models': ['**/*.yaml'],

@@ -31,7 +31,7 @@ cd Yolov8-GS-ECA
 
 # Copy custom modules to ultralytics installation
 python -c "
-import shutil, os, ultralytics
+import shutil, os, ultralytics, re
 
 ul_path = os.path.dirname(ultralytics.__file__)
 src = 'nn/modules'
@@ -43,13 +43,17 @@ for f in ['Attention.py', 'CoordAttention.py']:
     print(f'Copied {f}')
 
 # Add CSP to block.py
-import re
 with open(os.path.join(src, 'block.py')) as f:
     src_code = f.read()
-csp = re.search(r'(class CSP\\(.*?\\n(?:.*?\\n)*?^        return .*?\\n)', src_code, re.M).group(1)
-with open(os.path.join(dst, 'block.py'), 'a') as f:
-    f.write('\\n\\n' + csp)
-print('Added CSP class')
+
+csp_match = re.search(r'(class CSP\\(.*?\\n(?:.*?\\n)*?^        return .*?\\n)', src_code, re.M)
+if csp_match:
+    csp = csp_match.group(1)
+    with open(os.path.join(dst, 'block.py'), 'a') as f:
+        f.write('\\n\\n' + csp)
+    print('Added CSP class')
+else:
+    print('Warning: Could not find CSP class definition')
 "
 ```
 
