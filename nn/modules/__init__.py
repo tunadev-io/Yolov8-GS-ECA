@@ -21,9 +21,6 @@ from .head import Classify, Detect, Pose, RTDETRDecoder, Segment
 from  .CoordAttention import  CoordAtt
 from .transformer import (AIFI, MLP, DeformableTransformerDecoder, DeformableTransformerDecoderLayer, LayerNorm2d,
                           MLPBlock, MSDeformAttn, TransformerBlock, TransformerEncoderLayer, TransformerLayer)
-from .C2f_faster import C2f_Faster
-from .C2f_SCconv import C2f_ScConv,ScConv
-from  .RFCAConv import RFCAConv
 from .Attention import ShuffleAttention,ECAAttention,GAM_Attention,EMA
 __all__ = ('Conv', 'Conv2', 'LightConv', 'RepConv', 'DWConv', 'DWConvTranspose2d', 'ConvTranspose', 'Focus',
            'GhostConv', 'ChannelAttention', 'SpatialAttention', 'CBAM', 'Concat', 'TransformerLayer',
@@ -31,4 +28,4 @@ __all__ = ('Conv', 'Conv2', 'LightConv', 'RepConv', 'DWConv', 'DWConvTranspose2d
            'C2f', 'C3x', 'C3TR', 'C3Ghost', 'GhostBottleneck', 'Bottleneck', 'BottleneckCSP', 'Proto', 'Detect',
            'Segment', 'Pose', 'Classify', 'TransformerEncoderLayer', 'RepC3', 'RTDETRDecoder', 'AIFI',
            'DeformableTransformerDecoder', 'DeformableTransformerDecoderLayer', 'MSDeformAttn', 'MLP','CoordAtt','RepResNetBottleneck',
-           'C2f_res','RFAConv','C2f_Faster','C2f_ScConv','ScConv','Bottleneck3','C2f3','RFCAConv','ShuffleAttention','ECAAttention','GAM_Attention','EMA')
+           'C2f_res','RFAConv','Bottleneck3','C2f3','ShuffleAttention','ECAAttention','GAM_Attention','EMA')

@@ -9,7 +9,6 @@ import torch.nn.functional as F
 
 from .conv import Conv, DWConv, GhostConv, LightConv, RepConv,RFAConv
 from .transformer import TransformerBlock
-from .RFCAConv import RFCAConv
 
 __all__ = ('DFL', 'HGBlock', 'HGStem', 'SPP', 'SPPF', 'C1', 'C2', 'C3', 'C2f', 'C3x', 'C3TR', 'C3Ghost',
            'GhostBottleneck', 'Bottleneck', 'BottleneckCSP', 'Proto', 'RepC3','RepResNetBottleneck','C2f_res','RFAConv','CSP','Bottleneck3','C2f3')
