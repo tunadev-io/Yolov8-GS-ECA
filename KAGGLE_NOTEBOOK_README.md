@@ -56,9 +56,10 @@ In the Kaggle notebook settings:
 Execute all cells sequentially. The notebook will:
 
 1. **Environment Setup** (~5 minutes)
-   - Install dependencies
-   - Clone and install GE-YOLOv8 repository
-   - Verify custom modules
+   - Install standard ultralytics package
+   - Clone GE-YOLOv8 repository for custom modules
+   - Add custom repo to Python path
+   - Verify custom modules are accessible
 
 2. **Data Processing** (~20-40 minutes depending on dataset size)
    - Filter Axial T2 sequences
@@ -166,9 +167,17 @@ To compare with YOLOv11 results:
 
 ## Troubleshooting
 
-### Issue: Custom modules not found
+### Issue: Custom modules not found OR "does not appear to be a Python project" error
 
-**Solution**: Ensure the repository was cloned successfully and the installation completed without errors. Check the verification cell output.
+**Solution**: The GE-YOLOv8 repository doesn't have `setup.py`, so it cannot be installed with `pip install -e .`. The notebook now:
+1. Installs standard `ultralytics` package first
+2. Clones the custom repo and adds it to Python path
+3. Imports will use custom modules from the cloned directory
+
+If you see import errors, verify:
+- The custom repo was cloned to `/kaggle/working/Yolov8-GS-ECA`
+- The repo path is in `sys.path` (check verification cell output)
+- Files `nn/modules/block.py` and `nn/modules/Attention.py` exist in the cloned repo
 
 ### Issue: Out of memory
 

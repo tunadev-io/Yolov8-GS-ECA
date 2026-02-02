@@ -116,8 +116,14 @@ Model weights saved to: .../best.pt
 
 ## 🐛 Quick Troubleshooting
 
+### Error: "does not appear to be a Python project"
+**Fix**: This is expected! The GE-YOLOv8 repo doesn't have `setup.py`. The notebook has been updated to:
+1. Install standard ultralytics first
+2. Clone the repo and add to Python path
+3. No `pip install -e .` needed
+
 ### Error: "No module named 'ultralytics.nn.modules.block'"
-**Fix**: Re-run the installation cells (Cell 3-4)
+**Fix**: Ensure the custom repo path is added to `sys.path` before importing. Re-run cells 3-4.
 
 ### Error: "CUDA out of memory"
 **Fix**: Reduce batch size to 8 or 4 in training config

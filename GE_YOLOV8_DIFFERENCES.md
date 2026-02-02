@@ -71,14 +71,20 @@ class ECAAttention(nn.Module):
 pip install ultralytics
 ```
 
-### GE-YOLOv8 (Requires Custom Installation)
+### GE-YOLOv8 (Requires Custom Setup)
 ```bash
+# Install standard ultralytics first
+pip install ultralytics
+
+# Clone the custom repo (note: it doesn't have setup.py)
 git clone https://github.com/hxxbb/Yolov8-GS-ECA.git
-cd Yolov8-GS-ECA
-pip install -e .
+
+# Add to Python path in your code
+import sys
+sys.path.insert(0, '/path/to/Yolov8-GS-ECA')
 ```
 
-**Important**: The GE-YOLOv8 modules are NOT available in the standard pip package!
+**Important**: The GE-YOLOv8 repository doesn't have installation files (`setup.py` or `pyproject.toml`), so it cannot be installed with `pip install -e .`. Instead, add it to your Python path and it will provide the custom modules (CSP, ECAAttention) when importing.
 
 ## Model Loading Differences
 
@@ -176,15 +182,21 @@ Before comparing results, verify:
 
 ## Common Issues
 
-### Issue 1: Custom modules not found
-**Cause**: Standard ultralytics installed instead of custom version  
-**Solution**: Verify installation with `pip show ultralytics` shows editable install
+### Issue 1: "does not appear to be a Python project" error
+**Cause**: The GE-YOLOv8 repository doesn't have `setup.py` or `pyproject.toml`  
+**Solution**: Don't use `pip install -e .`. Instead:
+1. Install standard ultralytics: `pip install ultralytics`
+2. Clone the repo and add to Python path: `sys.path.insert(0, '/path/to/Yolov8-GS-ECA')`
 
-### Issue 2: Shape mismatch when loading weights
+### Issue 2: Custom modules not found
+**Cause**: Custom repo not in Python path or imported before being added  
+**Solution**: Ensure `sys.path.insert(0, '/path/to/Yolov8-GS-ECA')` is called before importing YOLO or creating models
+
+### Issue 3: Shape mismatch when loading weights
 **Cause**: Trying to load standard YOLOv8 weights on GE-YOLOv8  
 **Solution**: Train from scratch or use compatible weights
 
-### Issue 3: Different results than expected
+### Issue 4: Different results than expected
 **Cause**: Data pipeline differences  
 **Solution**: Double-check all preprocessing steps match exactly
 
