@@ -195,16 +195,11 @@ To compare with YOLOv11 results:
 
 If you use this notebook or the GE-YOLOv8 model, please cite:
 
-```
-@article{
-  title={Deep learning-based automatic detection and grading of disk herniation},
-  author={...},
-  journal={...},
-  year={2024}
-}
-```
+**Paper**: *"Deep learning-based automatic detection and grading of disk herniation"*
 
-Original GE-YOLOv8 Repository: https://github.com/hxxbb/Yolov8-GS-ECA
+*Note: Complete citation details (authors, journal, DOI) should be added once available.*
+
+**Original GE-YOLOv8 Repository**: https://github.com/hxxbb/Yolov8-GS-ECA
 
 ## License
 
